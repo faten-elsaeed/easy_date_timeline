@@ -508,16 +508,13 @@ class _MonthYearPickerState extends State<MonthYearPicker> {
     final localizations = EasyDateTimelineLocalizations.of(context);
     final DatePickerThemeData datePickerTheme = DatePickerTheme.of(context);
     final DatePickerThemeData defaults = DatePickerTheme.defaults(context);
-    // Constrain the textScaleFactor to the largest supported value to prevent
-    // layout issues.
-    // 14 is a common font size used to compute the effective text scale.
     const double fontSizeToScale = 14.0;
     final double textScaleFactor = MediaQuery.textScalerOf(context)
             .clamp(maxScaleFactor: _kMaxTextScaleFactor)
             .scale(fontSizeToScale) /
         fontSizeToScale;
     final Size dialogSize = _dialogSize(context) * textScaleFactor;
-    final DialogTheme dialogTheme = theme.dialogTheme;
+    final DialogThemeData dialogTheme = theme.dialogTheme;
     final String effectiveTitle = DateFormat(
             _isYearDisabled(_selectedYear)
                 ? DateFormatUtils.yearNumber
